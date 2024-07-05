@@ -1,12 +1,17 @@
 ﻿=== PeaZip language file ===
 Portuguese (Brazil) - Português
-9.6
+9.8
 Translated by: Havokdan
 Last rev. by: Giorgio Tani
-Last rev.: 20231009
+Last rev.: 20240225
 
 === PeaZip text group ===
 
+txt_9_8_alwaysflat: Sempre abrir arquivos em exibição plana
+txt_9_8_fnew: Extrair aqui (em uma nova pasta)
+txt_9_8_fsmart: Extrair aqui (nova pasta inteligente)
+txt_9_7_tarpipe: Usar pipe 7z / p7zip
+txt_9_7_smartsorting: Classificação inteligente de nomes de arquivos
 txt_9_6_centered: Centralizado
 txt_9_6_cside: Barra lateral compacta
 txt_9_6_loadpconfirm: Deseja carregar este perfil? Todos os dados do perfil atual serão substituídos, incluindo scripts salvos e Gerenciador de Senhas.
@@ -140,7 +145,7 @@ txt_8_0_forcebrowse: Navegue por tipos de arquivos não canônicos (contêineres
 txt_8_0_commonalgo: Algoritmos comuns
 txt_8_0_forceconvert: Converter tipos de arquivos não canônicos
 txt_8_0_defaultactionhint: Ação padrão clicando duas vezes em um arquivo associado ao PEAZIP do sistema
-txt_8_0_defaultaction: Ação padrão ao iniciar
+txt_8_0_defaultaction: Ação padrão na entrada (abrir, extrair automaticamente...)
 txt_8_0_enableextand: Ativar "Extrair e abrir com" submenu
 txt_8_0_forcetyping: Forçar digitar senhas interativamente
 txt_8_0_setpwopt: Definir opções de senha / arquivo-chave
@@ -543,7 +548,7 @@ txt_3_1_systmp: Temporários do Sistema
 txt_3_1_languagetools: Traduzir
 txt_3_1_workingdir: Diretório de trabalho
 txt_3_0_nonreadableorpw: Arquivo parece não legível ou protegido por senha
-txt_3_0_readablepw: Arquivo parece ser protegido por senha
+txt_3_0_readablepw: O arquivo está ilegível, pode estar protegido por senha
 txt_3_0_configure: Configure a Associação de arquivos, menu em contexto e menu “Enviar para”
 txt_3_0_resettmp: Restaurar peazip-tmp
 txt_2_9_address: Barra de endereço
@@ -1004,7 +1009,7 @@ txt_list_nomatch: sem correspondente
 txt_singlethread: Sem multithreading
 txt_none2: vazio
 txt_nonsolid: Não-sólido
-txt_level_normal: Normal
+txt_level_normal: normal
 txt_copy_error: copiado ou movido sem sucesso, código de erro:
 txt_description: Nota/descrição
 txt_compare_second: Agora selecione arquivo para ser comparado com
@@ -1025,7 +1030,7 @@ txt_open_path: Abrir diretório
 txt_opensource: Compressor portátil de Código Aberto
 txt_openwith: Abrir com...
 txt_aborted: Operação abortada
-txt_unit_cd: Unidade óptica
+txt_unit_cd: Drive óptico
 txt_options: Opções
 txt_other: Outros
 txt_otherparams: Outros parâmetros (livre edição)

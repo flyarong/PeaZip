@@ -376,11 +376,11 @@ if Form_report.StringGrid1.Cells[0,Form_report.StringGrid1.Row]='* Digest *' the
 fname:=Form_report.StringGrid1.Cells[Form_report.StringGrid1.Col,0]+'.txt';
 assignfile(t,fname);
 rewrite(t);
-write_header(t);
+//write_header(t);
 for x:=1 to Form_report.StringGrid1.RowCount-1 do
    begin
    if Form_report.StringGrid1.Cells[0,x]='* Digest *' then break;
-   writeln(t,Form_report.StringGrid1.Cells[Form_report.StringGrid1.Col,x]+'  '+Form_report.StringGrid1.Cells[1,x]);
+   write(t,Form_report.StringGrid1.Cells[Form_report.StringGrid1.Col,x]+'  '+Form_report.StringGrid1.Cells[1,x]+char($0A));
    end;
 closefile(t);
 end;
@@ -420,7 +420,10 @@ end;
 
 procedure TForm_report.FormShow(Sender: TObject);
 begin
-Form_report.PanelTitleREPTabAlign.Width:=Form_report.ShapeTitleREPb1.Width+Form_report.ShapeTitleREPb2.Width;
+Form_report.PanelTitleREPTabAlign.Width:=Form_report.ShapeTitleREPb1.Width+
+Form_report.ShapeTitleREPb2.Width+
+Form_report.LabelTitleREP1.BorderSpacing.Left+Form_report.LabelTitleREP1.BorderSpacing.Left+
+Form_report.LabelTitleREP2.BorderSpacing.Left;
 if alttabstyle<=2 then
    Form_report.PanelTitleREPTabAlign.AnchorSideLeft.Side:=asrleft
 else
@@ -443,6 +446,24 @@ else
    Form_report.ShapeTitleREPb2.visible:=true;
    Form_report.ShapeLinkREP2.visible:=false;
    end;
+
+   case alttabstyle of
+      0,3:
+      begin
+      Form_report.ShapeTitleREPb1.Shape:=stRoundRect;
+      Form_report.ShapeTitleREPb2.Shape:=stRoundRect;
+      Form_report.LabelTitleREP1.BorderSpacing.Left:=6;
+      Form_report.LabelTitleREP2.BorderSpacing.Left:=6;
+      end
+      else
+      begin
+      Form_report.ShapeTitleREPb1.Shape:=stRectangle;
+      Form_report.ShapeTitleREPb2.Shape:=stRectangle;
+      Form_report.LabelTitleREP1.BorderSpacing.Left:=0;
+      Form_report.LabelTitleREP2.BorderSpacing.Left:=0;
+      end;
+      end;
+
 end;
 
 procedure TForm_report.LabelCaseClick(Sender: TObject);
@@ -457,7 +478,7 @@ if LabelCase.Caption='[CASE]' then
    if Form_report.StringGrid1.RowCount<2 then exit;
    if Form_report.StringGrid1.ColCount<24 then exit;
    for irow:=1 to Form_report.StringGrid1.RowCount-1 do
-      for icol:=7 to 24 do Form_report.StringGrid1.Cells[icol,irow]:=lowercase(Form_report.StringGrid1.Cells[icol,irow]);
+      for icol:=7 to 24 do Form_report.StringGrid1.Cells[icol,irow]:=upcase(Form_report.StringGrid1.Cells[icol,irow]);
    end
 else
    begin
@@ -465,7 +486,7 @@ else
    if Form_report.StringGrid1.RowCount<2 then exit;
    if Form_report.StringGrid1.ColCount<24 then exit;
    for irow:=1 to Form_report.StringGrid1.RowCount-1 do
-      for icol:=7 to 24 do Form_report.StringGrid1.Cells[icol,irow]:=upcase(Form_report.StringGrid1.Cells[icol,irow]);
+      for icol:=7 to 24 do Form_report.StringGrid1.Cells[icol,irow]:=lowercase(Form_report.StringGrid1.Cells[icol,irow]);
    end;
 clicklabel_rep(LabelTitleREP2,ShapeTitleREPb2);
 if orig_activelabel_rep=LabelTitleREP1 then clicklabel_rep(LabelTitleREP1,ShapeTitleREPb1);

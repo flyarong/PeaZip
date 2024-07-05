@@ -10,7 +10,10 @@ uses
   Forms
   { add your units here },
   peach, Unit3, Unit5, Unit6, Unit2, Unit1, Unit8, Unit9, Unit10,
-  Unit11, Unit12, Unit13, Unit7, Unit_gwrap, Unit14;
+  Unit11, Unit12, Unit13, Unit7, Unit_gwrap, Unit14
+  {$IFDEF MSWINDOWS}//W10+ dark mode
+  ,SysUtils,fileutil,umetadarkstyle,udarkstyleparams,udarkstyleschemes
+  {$ENDIF};
 
 {$IFDEF MSWINDOWS}
 {$R peazip.res}
@@ -21,6 +24,24 @@ uses
 
 begin
 Application.Scaled:=True;
+{$IFDEF MSWINDOWS}//W10+ dark mode, can be manually forced to light or dark mode (not integrated with themes due to technical limitations)
+if fileexists(Programdirectory+'light') then
+   begin
+   PreferredAppMode:=pamForceLight;
+   umetadarkstyle.ApplyMetaDarkStyle(DefaultWhite);
+   end
+else
+   if fileexists(Programdirectory+'dark') then
+      begin
+      PreferredAppMode:=pamForceDark ;
+      umetadarkstyle.ApplyMetaDarkStyle(DefaultDark);
+      end
+   else
+      begin
+      PreferredAppMode:=pamallowdark;
+      umetadarkstyle.ApplyMetaDarkStyle(DefaultDark);
+      end;
+{$ENDIF}
 Application.Title:='PeaZip';
 Application.Initialize;
 Application.CreateForm(TForm_peach, Form_peach);
